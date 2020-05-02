@@ -1,8 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import * as yup from "yup";
 
 const Form = () => {
+  const [formState, setFormstate] = useState({
+    name: "",
+    size: "",
+    sauce: "original",
+    pepperoni: true,
+    sausage: false,
+    bacon: false,
+    mushrooms: false,
+    special: "",
+  });
+  const [errorState, setErrorstate] = useState({
+    name: "",
+    size: "",
+    sauce: "",
+    pepperoni: "",
+    sausage: "",
+    bacon: "",
+    mushrooms: "",
+    special: "",
+  });
+  const formSchema = yup.object().shape({
+    name: yup.string().min(2).required("Name is required"),
+    size: yup.string().required("Size is required"),
+    sauce: yup.string().required("Sauce is required"),
+    pepperoni: yup.boolean(),
+    sausage: yup.boolean(),
+    bacon: yup.boolean(),
+    mushrooms: yup.boolean(),
+    instructions: yup.string(),
+  });
+  const handleChange = (e) => {};
+  const validateChange = (e) => {
+    yup
+      .reach(formSchema, e.target.name)
+      .validate(e.target.value)
+      .then((valid) => {
+        setErrorstate({ ...errorState, [e.target.name]: "" });
+      })
+      .catch((err) => {
+        setErrorstate({ ...errorState, [e.target.name]: err.errors[0] });
+      });
+  };
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log("Form Submitted");
+  };
   return (
-    <form>
+    <form onSubmit={submitForm}>
       <div>
         <label htmlFor="name">
           Name
