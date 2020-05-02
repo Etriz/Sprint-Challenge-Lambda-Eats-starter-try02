@@ -9,10 +9,10 @@ const App = () => {
       <nav>
         <h1>Lambda Eats</h1>
         <Link to="/">
-          <button>Home</button>
+          <button>home</button>
         </Link>
         <Link to="/pizza">
-          <button>Order</button>
+          <button>order</button>
         </Link>
       </nav>
 

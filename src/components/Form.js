@@ -17,7 +17,7 @@ const Form = () => {
   const [errorState, setErrorstate] = useState({
     name: "",
     size: "",
-    sauce: "Must choose a sauce",
+    sauce: "must choose a sauce",
     pepperoni: "",
     sausage: "",
     bacon: "",
@@ -28,9 +28,9 @@ const Form = () => {
   const [returnData, setReturnData] = useState({});
   //!end states
   const formSchema = yup.object().shape({
-    name: yup.string().min(2).required("Name is required"),
-    size: yup.mixed().oneOf(["personal", "medium", "large"]).required("Must choose a size"),
-    sauce: yup.mixed().oneOf(["original", "alfredo"]).required("Must choose a sauce"),
+    name: yup.string().min(2).required("name is required"),
+    size: yup.mixed().oneOf(["personal", "medium", "large"]).required("must choose a size"),
+    sauce: yup.mixed().oneOf(["original", "alfredo"]).required("must choose a sauce"),
     cheese: yup.boolean(),
     pepperoni: yup.boolean(),
     sausage: yup.boolean(),
@@ -83,7 +83,7 @@ const Form = () => {
         setErrorstate({
           name: "",
           size: "",
-          sauce: "Must choose a sauce",
+          sauce: "must choose a sauce",
           pepperoni: "",
           sausage: "",
           bacon: "",
@@ -111,7 +111,7 @@ const Form = () => {
       <form onSubmit={formSubmit}>
         <div>
           <label htmlFor="name">
-            Name
+            name
             <input
               type="text"
               id="name"
@@ -125,7 +125,7 @@ const Form = () => {
         </div>
         <div>
           <label htmlFor="size">
-            Size
+            size
             <select id="size" name="size" onChange={handleChange}>
               <option value="">--Choose--</option>
               <option value="personal">Personal</option>
@@ -136,6 +136,8 @@ const Form = () => {
           {errorState.size.length > 0 ? <p>{errorState.size}</p> : null}
         </div>
         <div>
+          <span>select a sauce</span>
+          <br />
           <label htmlFor="original">
             <input
               type="radio"
@@ -158,6 +160,8 @@ const Form = () => {
           ) : null}
         </div>
         <div>
+          <span>add toppings</span>
+          <br />
           <label htmlFor="cheese">
             <input
               type="checkbox"
@@ -223,7 +227,9 @@ const Form = () => {
           </label>
         </div>
         <div>
-          <button disabled={isButtonDisabled}>Order Now!</button>
+          <button type="submit" disabled={isButtonDisabled}>
+            Order Now!
+          </button>
         </div>
       </form>
       <pre>{JSON.stringify(returnData, null, 2)}</pre>
