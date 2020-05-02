@@ -6,14 +6,22 @@ import Form from "./components/Form";
 const App = () => {
   return (
     <div>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
+      <nav>
+        <h1>Lambda Eats</h1>
+        <Link to="/">
+          <button>Home</button>
+        </Link>
+        <Link to="/pizza">
+          <button>Order</button>
+        </Link>
+      </nav>
+
       <Switch>
-        <Route to="/">
-          <Home />
-        </Route>
-        <Route to="/pizza">
+        <Route path="/pizza">
           <Form />
+        </Route>
+        <Route path="/">
+          <Home />
         </Route>
       </Switch>
     </div>
