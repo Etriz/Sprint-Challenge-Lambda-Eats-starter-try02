@@ -14,7 +14,8 @@
     "yup": "^0.28.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "tailwindcss": "npx tailwind build src/css/index.css -c src/css/tailwind.config.js -o src/css/tailwind.css",
+    "start": "npm run tailwindcss && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -108,9 +108,9 @@ const Form = () => {
 
   return (
     <>
-      <form onSubmit={formSubmit}>
-        <div>
-          <label htmlFor="name">
+      <form onSubmit={formSubmit} className="container max-w-xl rounded border border-black my-6">
+        <div className="bg-red-600 pt-2">
+          <label htmlFor="name" className="block pl-2">
             name
             <input
               type="text"
@@ -119,14 +119,21 @@ const Form = () => {
               placeholder="name"
               value={formState.name}
               onChange={handleChange}
+              className="block w-full p-2 -mx-1"
             />
           </label>
-          {errorState.name.length > 0 ? <p>{errorState.name}</p> : null}
+          {errorState.name.length > 0 ? (
+            <p className="block px-2 mx-1 bg-white text-red-600">{errorState.name}</p>
+          ) : null}
         </div>
-        <div>
-          <label htmlFor="size">
+        <div className="bg-red-600 pt-2">
+          <label htmlFor="size" className="block pl-2">
             size
-            <select id="size" name="size" onChange={handleChange}>
+            <select
+              id="size"
+              name="size"
+              onChange={handleChange}
+              className="block w-full p-2 -mx-1">
               <option value="">--Choose--</option>
               <option value="personal">Personal</option>
               <option value="medium">Medium</option>
@@ -135,10 +142,10 @@ const Form = () => {
           </label>
           {errorState.size.length > 0 ? <p>{errorState.size}</p> : null}
         </div>
-        <div>
-          <span>select a sauce</span>
+        <div className="bg-red-600 pt-2">
+          <span className="px-2">select a sauce</span>
           <br />
-          <label htmlFor="original">
+          <label htmlFor="original" className="block pl-2 bg-white">
             <input
               type="radio"
               name="sauce"
@@ -148,21 +155,20 @@ const Form = () => {
             />
             original
           </label>
-          <label htmlFor="alfredo">
+          <label htmlFor="alfredo" className="block pl-2 bg-white">
             <input type="radio" name="sauce" id="alfredo" value="alfredo" onChange={handleChange} />
             alfredo
           </label>
           {errorState.sauce.value !== "" ? (
             <>
-              <br />
-              <span> {errorState.sauce}</span>
+              <span className="block px-2 bg-white text-red-600"> {errorState.sauce}</span>
             </>
           ) : null}
         </div>
-        <div>
-          <span>add toppings</span>
+        <div className="bg-red-600 pt-2">
+          <span className="px-2">add toppings</span>
           <br />
-          <label htmlFor="cheese">
+          <label htmlFor="cheese" className="block pl-2 bg-white">
             <input
               type="checkbox"
               id="cheese"
@@ -172,7 +178,7 @@ const Form = () => {
             />
             cheese
           </label>
-          <label htmlFor="pepperoni">
+          <label htmlFor="pepperoni" className="block pl-2 bg-white">
             <input
               type="checkbox"
               id="pepperoni"
@@ -182,7 +188,7 @@ const Form = () => {
             />
             pepperoni
           </label>
-          <label htmlFor="sausage">
+          <label htmlFor="sausage" className="block pl-2 bg-white">
             <input
               type="checkbox"
               id="sausage"
@@ -192,7 +198,7 @@ const Form = () => {
             />
             sausage
           </label>
-          <label htmlFor="bacon">
+          <label htmlFor="bacon" className="block pl-2 bg-white">
             <input
               type="checkbox"
               id="bacon"
@@ -202,7 +208,7 @@ const Form = () => {
             />
             bacon
           </label>
-          <label htmlFor="mushrooms">
+          <label htmlFor="mushrooms" className="block pl-2 bg-white">
             <input
               type="checkbox"
               id="mushrooms"
@@ -213,8 +219,8 @@ const Form = () => {
             mushrooms
           </label>
         </div>
-        <div>
-          <label htmlFor="special">
+        <div className="bg-red-600 pt-2">
+          <label htmlFor="special" className="block pl-2">
             special instructions
             <input
               type="text"
@@ -223,11 +229,15 @@ const Form = () => {
               placeholder="special instructions"
               value={formState.special}
               onChange={handleChange}
+              className="block w-full p-2 -mx-1"
             />
           </label>
         </div>
-        <div>
-          <button type="submit" disabled={isButtonDisabled}>
+        <div className="bg-red-600 p-2">
+          <button
+            type="submit"
+            disabled={isButtonDisabled}
+            className="rounded px-2 py-1 bg-white hover:bg-blue-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-75">
             Order Now!
           </button>
         </div>
